@@ -1,31 +1,53 @@
 # HTB REPORT – MEOW (BEGINNER LAB)
 
-TARGET: MEOW
-PLATFORM: Hack The Box
-OS: Linux
-DIFFICULTY: Very Easy
-================================
+---
+
+## Target Information
+- **Target:** Meow  
+- **Platform:** Hack The Box  
+- **Operating System:** Linux  
+- **Difficulty:** Very Easy  
+
+---
 
 1. Reconnaissance
-Wykonano podstawowy skan portów. Zidentyfikowano otwartą usługę Telnet (port 23). Brak innych istotnych usług sieciowych.
+A basic port scan was performed against the target system.  
+The scan revealed a single open service:
+
+- **Port 23/tcp – Telnet**
 
 2. Enumeration
-Usługa Telnet była dostępna bez odpowiednich zabezpieczeń. Brak mechanizmu uwierzytelniania lub możliwość logowania bez hasła.
+Further enumeration of the Telnet service showed that it was **misconfigured**.  
+The service allowed connections **without proper authentication**, enabling users to log in without providing valid credentials.
+
+This indicates a critical security misconfiguration.
 
 3. Initial Access
-Uzyskano bezpośredni dostęp do systemu poprzez połączenie Telnet bez konieczności podawania danych logowania.
+Initial access was obtained by connecting directly to the Telnet service:
 
+```bash
+telnet <target_ip>
+```
 4. Privilege Level
-Dostęp został uzyskany bezpośrednio na poziomie root, bez potrzeby eskalacji uprawnień.
-
+The obtained shell was running with root privileges.
+No privilege escalation techniques were required, as the service provided full administrative access by default.
+```bash 
+id
+uid=0(root) gid=0(root) groups=0(root)
+```
 5. Impact
-Pełna kompromitacja systemu. Atakujący uzyskuje całkowitą kontrolę nad maszyną bez użycia exploitów, wyłącznie poprzez brak zabezpieczeń usługi zdalnego dostępu.
+This vulnerability results in a complete system compromise.
+An attacker can gain full control over the machine without using exploits, malware, or advanced techniques — solely due to improper configuration of a remote access service.
 
 6. Key Takeaway
-Niezabezpieczony Telnet stanowi krytyczne zagrożenie. Usługi zdalnego dostępu muszą być chronione uwierzytelnianiem lub całkowicie wyłączone.
+- Telnet transmits data in plaintext and should never be exposed to untrusted networks.
+- Remote access services must always enforce strong authentication.
+- Misconfiguration can be as dangerous as software vulnerabilities.
+- Even very simple security oversights can lead to total compromise.
+
+---
 
 SUMMARY
-================================
 
 MEOW pokazuje absolutne podstawy bezpieczeństwa:
 – brak uwierzytelniania = natychmiastowy dostęp
