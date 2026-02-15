@@ -1,6 +1,5 @@
 # HTB REPORT – MEOW (BEGINNER LAB)
 
-================================
 TARGET: MEOW
 PLATFORM: Hack The Box
 OS: Linux
@@ -25,7 +24,6 @@ Pełna kompromitacja systemu. Atakujący uzyskuje całkowitą kontrolę nad masz
 6. Key Takeaway
 Niezabezpieczony Telnet stanowi krytyczne zagrożenie. Usługi zdalnego dostępu muszą być chronione uwierzytelnianiem lub całkowicie wyłączone.
 
-================================
 SUMMARY
 ================================
 
@@ -35,7 +33,3 @@ MEOW pokazuje absolutne podstawy bezpieczeństwa:
 – błędna konfiguracja jest często najgroźniejszą podatnością
 
 Flow: Recon → Telnet → Brak auth → Root access.
-
-================================
-END OF REPORT
-================================
