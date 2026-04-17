@@ -15,7 +15,7 @@ The lab begins with introductory theory on offensive security and then transitio
 
 A simulated web application called FakeBank was deployed to a virtual machine for exploitation. The initial reconnaissance was performed by browsing the target site within the VM.
 
-No external network services beyond HTTP (~web) were observed as this is a controlled lab environment focused on learning enumeration skills. :contentReference[oaicite:0]{index=0}
+No external network services beyond HTTP (~web) were observed as this is a controlled lab environment focused on learning enumeration skills.
 
 ---
 
@@ -25,7 +25,7 @@ Enumeration targeted the FakeBank website using a directory brute‑forcing tool
 A terminal was opened within the VM and the following command was used to discover hidden pages:  
 ``` gobuster -u http://fakebank.thm -w wordlist.txt dir ```
 
-This identified sensitive URLs not visible in the main browser interface. “/bank-transfer” was discovered as a hidden page that allowed interaction beyond normal user functions. :contentReference[oaicite:1]{index=1}
+This identified sensitive URLs not visible in the main browser interface. “/bank-transfer” was discovered as a hidden page that allowed interaction beyond normal user functions.
 
 ---
 
@@ -33,7 +33,7 @@ This identified sensitive URLs not visible in the main browser interface. “/ba
 Initial access to sensitive functionality was achieved purely through web enumeration and directory brute‑forcing.  
 
 - Gobuster uncovered hidden paths like `/bank-transfer` that are not linked through the main application.  
-- Browsing to this URL granted access to a transfer portal without authentication. :contentReference[oaicite:2]{index=2}
+- Browsing to this URL granted access to a transfer portal without authentication.
 
 No exploitation of software bugs was required; enumeration alone provided access to critical functionality.
 
@@ -44,7 +44,7 @@ By navigating to the hidden transfer page, it was possible to perform actions de
 
 - The admin transfer interface allowed funds to be moved between accounts, including unauthorized transfers to a user’s account.  
 - A successful transfer of funds resulted in a confirmation message indicating successful compromise.  
-- The final flag (displayed on the account page) was shown after the transfer was completed. :contentReference[oaicite:3]{index=3}
+- The final flag (displayed on the account page) was shown after the transfer was completed.
 
 This demonstrates how hidden or unauthenticated pages can expose critical functionality, leading to integrity and confidentiality breaches.
 
@@ -53,7 +53,7 @@ This demonstrates how hidden or unauthenticated pages can expose critical functi
 # 5. Privilege Level
 Access to the hidden transfer page effectively granted high‑level functionality within the banking application without requiring credentials.  
 
-Privilege was not elevated within an operating system context, but within the application layer the user could perform unauthorized actions typically restricted to administrators. :contentReference[oaicite:4]{index=4}
+Privilege was not elevated within an operating system context, but within the application layer the user could perform unauthorized actions typically restricted to administrators.
 
 ---
 
@@ -64,23 +64,23 @@ An attacker or ethical hacker operating within this lab could:
 - Execute unauthorized transactions via uncovered admin interfaces.  
 - Compromise application integrity and expose potential financial manipulation.  
 
-This illustrates the importance of restricting sensitive endpoints and avoiding reliance on obscurity for security. :contentReference[oaicite:5]{index=5}
+This illustrates the importance of restricting sensitive endpoints and avoiding reliance on obscurity for security.
 
 ---
 
 # 7. Key Takeaways
-- Offensive security emphasizes thinking like an attacker to proactively find vulnerabilities. :contentReference[oaicite:6]{index=6}  
-- Web enumeration tools like Gobuster can reveal hidden application paths leading to critical flaws. :contentReference[oaicite:7]{index=7}  
-- Hidden or unprotected admin interfaces represent a severe risk if not properly secured. :contentReference[oaicite:8]{index=8}  
-- Enumeration alone may be sufficient to compromise applications in beginner labs. :contentReference[oaicite:9]{index=9}
+- Offensive security emphasizes thinking like an attacker to proactively find vulnerabilities.
+- Web enumeration tools like Gobuster can reveal hidden application paths leading to critical flaws.
+- Hidden or unprotected admin interfaces represent a severe risk if not properly secured.
+- Enumeration alone may be sufficient to compromise applications in beginner labs.
 
 ---
 
 # SUMMARY
 The Offensive Security Intro room on TryHackMe:
 
-- Introduces offensive security concepts and ethical hacking methods. :contentReference[oaicite:10]{index=10}  
-- Demonstrates web application enumeration and brute‑forcing. :contentReference[oaicite:11]{index=11}  
-- Provides practical experience in finding and exploiting hidden functionality. :contentReference[oaicite:12]{index=12}  
+- Introduces offensive security concepts and ethical hacking methods.
+- Demonstrates web application enumeration and brute‑forcing.
+- Provides practical experience in finding and exploiting hidden functionality.
 
 Flow: Concept Overview → VM Launch → Web Enumeration → Hidden Page Discovery → Exploitation → Flag Exposure
